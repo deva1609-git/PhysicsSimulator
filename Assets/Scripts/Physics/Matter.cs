@@ -40,7 +40,7 @@ public class Matter : MonoBehaviour
     }
     void SetTrailTime()
     {
-        float trailTime = (float)(trailLength / velocity.Magnitude);
+        float trailTime = (float)(trailLength / (velocity.Magnitude* universalTime.TimeScale));
         gameObject.GetComponent<TrailRenderer>().time = trailTime;    
     }
 }
