@@ -1,5 +1,4 @@
 using UnityEngine;
-
 using System.Collections.Generic;
 
 public class MatterGravity : MonoBehaviour
@@ -7,7 +6,7 @@ public class MatterGravity : MonoBehaviour
 
     List<Matter> AllBodies = new List<Matter>();
     UniversalTime universalTime;
-    float timeScale;
+    
     void Start()
     {
         AllBodies = new List<Matter>(FindObjectsByType<Matter>());
@@ -17,26 +16,27 @@ public class MatterGravity : MonoBehaviour
 
 
 
-    Vector3 GetGravitationalForce(Matter body1, Matter body2)
+    Vector3d GetGravitationalForce(Matter body1, Matter body2)
     {
-        float distance = Vector3.Distance(body1.transform.position, body2.transform.position);
-        Debug.Log("Pairings:" + body1.name + " vs " + body2.name + " Distance: " + distance);
-        float CalculatedForce = body1.mass * body2.mass / Mathf.Pow(distance, 2);
-        Vector3 direction = (body2.transform.position - body1.transform.position).normalized;
+        double distance = Vector3d.Distance(body1.position, body2.position);//AU
+        //Debug.Log("Pairings:" + body1.name + " vs " + body2.name + " Distance: " + distance);
+        double CalculatedForce = (body1.mass * body2.mass * Constants.G)/(distance*distance); 
+        Vector3d direction = (body2.position - body1.position).Normalized;
         return direction * CalculatedForce;
+        
     }
     // Update is called once per frame
     void FixedUpdate()
     {
-        timeScale = universalTime.TimeScale;
+        
         for (int i = 0; i < AllBodies.Count; i++)
         {
             
 
             for (int j = i + 1; j < AllBodies.Count; j++)
             {
-                Vector3 calculatedForce1 = GetGravitationalForce(AllBodies[i], AllBodies[j]);
-                Vector3 calculatedForce2 = -calculatedForce1;
+                Vector3d calculatedForce1 = GetGravitationalForce(AllBodies[i], AllBodies[j]);
+                Vector3d calculatedForce2 = -calculatedForce1;
 
                 AllBodies[i].ApplyForce(calculatedForce1);
                 AllBodies[j].ApplyForce(calculatedForce2);
