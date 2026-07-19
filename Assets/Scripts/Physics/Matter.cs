@@ -8,11 +8,13 @@ public class Matter : MonoBehaviour
     public double mass;//SolarMass unit
     public Vector3d position; //AU
     double massKG;
+    public double Radius; //AU
 
     public Vector3d velocity;// AU / day
     UniversalTime universalTime;
     public float trailLength = 10f;
     float renderScale;
+    CameraMove camMove;
   
     
     
@@ -21,7 +23,7 @@ public class Matter : MonoBehaviour
     {
         universalTime = FindAnyObjectByType<UniversalTime>();
         renderScale = FindAnyObjectByType<Constants>().RenderScale;
-        
+        camMove = FindAnyObjectByType<CameraMove>();
     }
 
     public void ApplyForce(Vector3d force)
@@ -42,5 +44,10 @@ public class Matter : MonoBehaviour
     {
         float trailTime = (float)(trailLength / (velocity.Magnitude* universalTime.TimeScale));
         gameObject.GetComponent<TrailRenderer>().time = trailTime;    
+    }
+
+    private void OnMouseDown()
+    {
+        camMove.focusedObject = gameObject;
     }
 }
