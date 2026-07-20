@@ -41,7 +41,7 @@ public class CameraMove : MonoBehaviour
             transform.RotateAround(focusedObject.transform.position, Vector3.up, deltaX * rotateSpeed);
 
             float pitchDelta = deltaY * rotateSpeed;
-            //pitchDelta = Mathf.Clamp(pitch + pitchDelta, minPitch, maxPitch) - pitch;
+            pitchDelta = Mathf.Clamp(pitch + pitchDelta, minPitch, maxPitch) - pitch;
             pitch += pitchDelta;
             transform.RotateAround(focusedObject.transform.position, transform.right, pitchDelta);
         }

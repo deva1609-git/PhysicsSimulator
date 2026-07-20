@@ -583,7 +583,7 @@ GameObject:
   - component: {fileID: 455054455}
   m_Layer: 0
   m_Name: Mars
-  m_TagString: Untagged
+  m_TagString: MatterBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -754,6 +754,7 @@ MonoBehaviour:
     y: 0
     z: 0
   Radius: 0
+  PlanetName: 
   velocity:
     x: 0
     y: 0
@@ -1912,7 +1913,7 @@ GameObject:
   - component: {fileID: 1394825058}
   m_Layer: 0
   m_Name: Jupiter
-  m_TagString: Untagged
+  m_TagString: MatterBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2083,6 +2084,7 @@ MonoBehaviour:
     y: 0
     z: 0
   Radius: 0
+  PlanetName: 
   velocity:
     x: 0
     y: 0
@@ -2198,7 +2200,7 @@ GameObject:
   - component: {fileID: 1406002723}
   m_Layer: 0
   m_Name: Earth
-  m_TagString: Untagged
+  m_TagString: MatterBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2221,6 +2223,7 @@ MonoBehaviour:
     y: 0
     z: 0
   Radius: 0
+  PlanetName: 
   velocity:
     x: 0
     y: 0
@@ -2484,7 +2487,7 @@ GameObject:
   - component: {fileID: 1435576710}
   m_Layer: 0
   m_Name: Sun
-  m_TagString: Untagged
+  m_TagString: MatterBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2507,6 +2510,7 @@ MonoBehaviour:
     y: 0
     z: 0
   Radius: 5
+  PlanetName: 
   velocity:
     x: 0
     y: 0
@@ -2762,7 +2766,7 @@ GameObject:
   - component: {fileID: 1464619355}
   m_Layer: 0
   m_Name: Saturn
-  m_TagString: Untagged
+  m_TagString: MatterBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2933,6 +2937,7 @@ MonoBehaviour:
     y: 0
     z: 0
   Radius: 0
+  PlanetName: 
   velocity:
     x: 0
     y: 0

@@ -1,5 +1,8 @@
 using System;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Matter : MonoBehaviour
 {
@@ -9,13 +12,14 @@ public class Matter : MonoBehaviour
     public Vector3d position; //AU
     double massKG;
     public double Radius; //AU
+    public string PlanetName;
 
     public Vector3d velocity;// AU / day
     UniversalTime universalTime;
     public float trailLength = 10f;
     float renderScale;
     CameraMove camMove;
-  
+    GameObject NameTextCanvasPrefab;
     
     
 
@@ -24,6 +28,16 @@ public class Matter : MonoBehaviour
         universalTime = FindAnyObjectByType<UniversalTime>();
         renderScale = FindAnyObjectByType<Constants>().RenderScale;
         camMove = FindAnyObjectByType<CameraMove>();
+        PlanetName = gameObject.name;
+
+        GameObject NameTextCanvasPrefab = Resources.Load<GameObject>("Prefabs/NameTextCanvas");
+        GameObject labelInstance = Instantiate(NameTextCanvasPrefab, transform.position, Quaternion.identity, gameObject.transform);
+        TMP_Text NameText = labelInstance.GetComponentInChildren<TMP_Text>();
+        NameText.text = PlanetName;
+        ConstraintSource Camsource = new ConstraintSource();
+        Camsource.sourceTransform = camMove.gameObject.transform;
+        Camsource.weight = 1f;
+        labelInstance.GetComponentInChildren<LookAtConstraint>().AddSource(Camsource);
     }
 
     public void ApplyForce(Vector3d force)
